@@ -22,12 +22,13 @@ def getSentimentValue(all_text, obj):
 			for words in phrase[0]:
 				p_opinion = search(words[0],posi_words,'Positive')
 				n_opinion = search(words[0],neg_words,'Negative')
+				cofficient = -1 if n_opinion == 'Negative' else 1
 				if words[1] == 'JJR' or words[1]=='RBR':
-					intensity = intensity+0.25
+					intensity = intensity + (cofficient * 0.25)
 				elif words[1] == 'JJS' or words[1]=='RBS':
-					intensity = intensity+0.75
+					intensity = intensity + (cofficient * 0.75)
 				elif (words[1] == 'JJ' or words[1] == 'RB') and (n_opinion=='Negative' or p_opinion=='Positive'):
-					intensity = intensity+0.1
+					intensity = intensity + (cofficient * 0.1)
 				else:
 					intensity_search = search(words[0],high_words,'TRUE')
 					if intensity_search == 'TRUE':
