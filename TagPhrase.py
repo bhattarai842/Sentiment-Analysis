@@ -1,7 +1,7 @@
 from PhraseChunk import getChunkPhrase
 from Search import search
-import polarity
 from Polarity import getPolarity
+import polarity
 
 def getTagPhrase(given_text, obj):
 	chunk_list = getChunkPhrase(given_text)
